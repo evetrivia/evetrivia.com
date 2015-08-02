@@ -20,6 +20,7 @@
         margin: auto;
         padding: 20px;
         text-align: center;
+        margin-bottom: 70px;
       }
       #container {
         overflow: hidden;
@@ -61,14 +62,14 @@
         cursor: pointer;
       }
       #highscoreBox {
-        position: absolute;
+        position: fixed;
         bottom: 0;
         left: 0;
         right: 0;
         text-align: center;
       }
       #highscore {
-        max-width: 760px;
+        max-width: 770px;
         margin: auto;
         padding: 15px;
         background-color: rgba(255, 255, 255, .6);
@@ -178,7 +179,7 @@
       }
 
       function ask () {
-        ajax("http://erebus.evetrivia.com/questions/random/", function (r) {
+        ajax("http://erebus.evetrivia.com/questions/random/?ts=" + (new Date().getTime()), function (r) {
           console.log(r);
           $("#container").innerHTML = "";
           $("#container").appendChild(createElement(baseTemplate.format({question: r.question})));
