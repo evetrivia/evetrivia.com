@@ -47,7 +47,7 @@ function ajax (url, callback, format, options) {
 
 String.prototype.format = function() {
   var args = arguments;
-  return this.replace(/{([a-zA-Z\d]+)}/g, function(match, varname) {
+  return this.replace(/{([a-zA-Z_\d]+)}/g, function(match, varname) {
     return typeof args[0] != 'undefined' && args[0][varname] != "undefined" ? args[0][varname] : "";
   });
 };
@@ -59,44 +59,3 @@ function createElement (elStr) {
     if(tmpEl.children[0].nodeType == 1)
       return tmpEl.children[i];
 }
-
-var baseTemplate = $("#baseTemplate").innerHTML;
-var imgTemplate = $("#imgTemplate").innerHTML;
-var choiceTemplate = $("#choiceTemplate").innerHTML;
-
-var highscore = 0;
-
-function addHighscore (score) {
-  highscore += score;
-  if(highscore < 0)
-    highscore = 0;
-  $("#highscore").innerHTML = "Highscore : " + highscore;
-}
-
-function ask () {
-  ajax("https://erebus.evetrivia.com/questions/random/?ts=" + (new Date().getTime()), function (r) {
-    console.log(r);
-    $("#container").innerHTML = "";
-    $("#container").appendChild(createElement(baseTemplate.format({question: r.question})));
-    if(r.images)
-      $("#images").appendChild(createElement(imgTemplate.format(r.images)));
-    for(var choice in r.choices) {
-      var ch = createElement(choiceTemplate.format(r.choices[choice]));
-      ch.addEventListener("click", function () {
-        if(r.answer == this.getAttribute("value")) {
-          addHighscore(1);
-          this.style.backgroundColor = "green";
-          setTimeout(function () { ask(); }, 400);
-        } else {
-          addHighscore(-1);
-          this.style.backgroundColor = "red";
-          this.style.opacity = "0";
-        }
-      });
-      $("#choices").appendChild(ch);
-    }
-  }, "json");
-}
-
-addHighscore(0);
-ask();
