@@ -70,7 +70,7 @@ function switchPage (el) {
 var pages = ['', 'home', 'ask', 'howitworks'];
 window.onhashchange = window.onload = function () {
   if(pages.indexOf(location.hash.slice(1)) != -1) {
-  console.log("hello");
+    ask();
     var toggles = $("[name='page']");
     for(var t in toggles) {
       toggles[t].checked = false;
