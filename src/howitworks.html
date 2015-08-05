@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>EVE Trivia</title>
+        <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/evetrivia.css">
+        <script src="vendor/jquery/dist/jquery.min.js"></script>
+        <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <!-- Brand and menu toggle -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="./index.html">EVE Trivia</a>
+                </div>
+                <!-- Nav links here so they can be toggled -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="play.html">Play</a></li>
+                        <li><a href="howitworks.html">How it works</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="page-header">
+                <h1>How it works</h1>
+            </div>
+            <h2>Projects</h2>
+            <p>All parts of the EVE Trivia project are open sourced and hosted on GitHub.
+            Here is a list of all the projects and their current status. This also
+            acts as a semi dashboard for them.</p>
+            <h3>Backends</h3>
+            <table class="table">
+                <tr>
+                    <th>Project Name</th>
+                    <th>Description</th>
+                    <th>Build Status</th>
+                    <th>Coverage Status</th>
+                    <th>PyPi Status</th>
+                    <th>Docs</th>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/evetrivia/thanatos">Thanatos</a></td>
+                    <td>A Python library for generating trivia questions from the EVE SDE.</td>
+                    <td><a href="https://travis-ci.org/evetrivia/thanatos"><img src="https://travis-ci.org/evetrivia/thanatos.svg"></a></td>
+                    <td><a href="https://coveralls.io/r/evetrivia/thanatos"><img src="https://coveralls.io/repos/evetrivia/thanatos/badge.svg"></a></td>
+                    <td><a href="https://pypi.python.org/pypi/Thanatos"><img src="https://img.shields.io/pypi/v/Thanatos.svg"></a></td>
+                    <td><a href="https://thanatos.readthedocs.org/en/latest/"><img src="https://readthedocs.org/projects/thanatos/badge/"></a></td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/evetrivia/erebus">Erebus</a></td>
+                    <td>A simple Flask application to take questions from Thanatos and server them via an HTTP API.</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/evetrivia/nyx">Nyx</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <h3>Frontends</h3>
+            For now the only frontend is the one integrated into the play portion of this
+            site. At a later date a standalone web frontend will be created for the project.
+            The posability also exists of creating dedicated mobile frontends for EVE Trivia
+            but at this time nothing is planned beyond the single web frontend.
+            <h2>The backlog <a href="https://waffle.io/evetrivia/evetrivia.github.io"><img src="https://badge.waffle.io/evetrivia/thanatos.svg?label=ready&title=Ready"></a></h2>
+            <p>The backlog of tasks to be completed for all projects associated with EVE Trivia
+            is maintained on Waffle.io. You can view it
+            <a href="https://waffle.io/evetrivia/evetrivia.github.io">here</a>.
+        </div>
+    </body>
+</html>

@@ -1,81 +1,13 @@
 <html>
   <head>
+    <title>EVE Trivia</title>
+
     <meta charset="UTF-8"/>
     <meta name="mobile-web-app-capable" content="yes">
-    <title>EVE Trivia</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-    <style type="text/css">
-      body {
-        background: #000 url("bg.jpg") no-repeat 50% 0;
-      }
-      body {
-        margin: 0;
-        font-size: 0.9em;
-        line-height: 1.5;
-        font-family: sans-serif;
-        color: #202020;
-      }
-      #conti {
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-        text-align: center;
-        margin-bottom: 70px;
-      }
-      #container {
-        overflow: hidden;
-        background-color: rgba(255, 255, 255, .6);
-        box-shadow: 0px 0px 5px 0px;
-      }
-      #images {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-      img {
-        box-shadow: 0px 0px 5px 0px gray;
-        max-width: 100%;
-      }
-      .list-group-item {
-        position: relative;
-        display: block;
-        padding: 10px 15px;
-        margin-bottom: -1px;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        transition: opacity 1s, background-color .2s;
-        box-shadow: 0px 0px 2px 0px white inset;
-      }
-      .list-group {
-        padding-left: 0;
-        margin-bottom: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
-      }
-      .question {
-        margin-left: 20px;
-        margin-right: 20px;
-        background-color: rgba(255,255,255,.6);
-        padding: 15px;
-        border: 1px solid rgba(255,255,255,.3);
-      }
-      .choice {
-        cursor: pointer;
-      }
-      #highscoreBox {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        text-align: center;
-      }
-      #highscore {
-        max-width: 770px;
-        margin: auto;
-        padding: 15px;
-        background-color: rgba(255, 255, 255, .6);
-        box-shadow: 0px 0px 5px 0px;
-      }
-    </style>
+    
+    <link rel="stylesheet" href="main.css">
+    
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -105,105 +37,6 @@
     <script type="text/template" id="choiceTemplate">
       <li class="choice list-group-item" value="{value}">{text}</li>
     </script>
-    <script type="text/javascript">
-      function $ (id, el) {
-        var c = el ? el : document;
-        if(document.querySelector && document.querySelectorAll) {
-          if(id.substr(0,1) == "#" && id.split(" ").length == 1) {
-            return document.querySelector(id);
-          } else {
-            return document.querySelectorAll(id);
-          }
-        } else {
-          switch(id.substr(0,1)) {
-            case "#":
-              return c.getElementById(id.slice(1));
-            case ".":
-              return c.getElementsByClassName(id.slice(1));
-            default:
-              return c.getElementsByTagName(id);
-          }
-        }
-      }
-      function ajax (url, callback, format, options) {
-        var timeout;
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-          if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            clearTimeout(timeout);
-            switch(format) {
-              case "json":
-                callback(JSON.parse(xmlhttp.responseText));
-                break;
-              default:
-                callback(xmlhttp.responseText);
-                break;
-            }
-          }
-        };
-        xmlhttp.open("GET", url, true);
-        xmlhttp.send();
-        timeout = setTimeout(function () {
-          xmlhttp.abort();
-          console.log("Request Timed out");
-          if(options && options.retry === true)
-          ajax(url, callback, format, options);
-        }, options && options.timeout ? options.timeout : 30000);
-        return xmlhttp;
-      }
-      String.prototype.format = function() {
-        var args = arguments;
-        return this.replace(/{([a-zA-Z\d]+)}/g, function(match, varname) {
-          return typeof args[0] != 'undefined' && args[0][varname] != "undefined" ? args[0][varname] : "";
-        });
-      };
-      function createElement (elStr) {
-        var tmpEl = document.createElement("div");
-        tmpEl.innerHTML = elStr;
-        for(var i = 0; i < tmpEl.children.length; i++)
-          if(tmpEl.children[0].nodeType == 1)
-            return tmpEl.children[i];
-      }
-
-      var baseTemplate = $("#baseTemplate").innerHTML;
-      var imgTemplate = $("#imgTemplate").innerHTML;
-      var choiceTemplate = $("#choiceTemplate").innerHTML;
-
-      var highscore = 0;
-
-      function addHighscore (score) {
-        highscore += score;
-        if(highscore < 0)
-          highscore = 0;
-        $("#highscore").innerHTML = "Highscore : " + highscore;
-      }
-
-      function ask () {
-        ajax("http://erebus.evetrivia.com/questions/random/?ts=" + (new Date().getTime()), function (r) {
-          console.log(r);
-          $("#container").innerHTML = "";
-          $("#container").appendChild(createElement(baseTemplate.format({question: r.question})));
-          if(r.images)
-            $("#images").appendChild(createElement(imgTemplate.format(r.images)));
-          for(var choice in r.choices) {
-            var ch = createElement(choiceTemplate.format(r.choices[choice]));
-            ch.addEventListener("click", function () {
-              if(r.answer == this.getAttribute("value")) {
-                addHighscore(1);
-                this.style.backgroundColor = "green";
-                setTimeout(function () { ask(); }, 400);
-              } else {
-                addHighscore(-1);
-                this.style.backgroundColor = "red";
-                this.style.opacity = "0";
-              }
-            });
-            $("#choices").appendChild(ch);
-          }
-        }, "json");
-      }
-      addHighscore(0);
-      ask();
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>
