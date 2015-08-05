@@ -74,7 +74,7 @@ function addHighscore (score) {
 }
 
 function ask () {
-  ajax("http://erebus.evetrivia.com/questions/random/?ts=" + (new Date().getTime()), function (r) {
+  ajax("https://erebus.evetrivia.com/questions/random/?ts=" + (new Date().getTime()), function (r) {
     console.log(r);
     $("#container").innerHTML = "";
     $("#container").appendChild(createElement(baseTemplate.format({question: r.question})));
