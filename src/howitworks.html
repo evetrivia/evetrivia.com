@@ -1,38 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>EVE Trivia</title>
-        <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/evetrivia.css">
-        <script src="vendor/jquery/dist/jquery.min.js"></script>
-        <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+        <title>EVE Trivia - How it works</title>
+
+    <meta charset="UTF-8"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    
+    <link rel="stylesheet" href="main.css">
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <!-- Brand and menu toggle -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="./index.html">EVE Trivia</a>
-                </div>
-                <!-- Nav links here so they can be toggled -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li><a href="play.html">Play</a></li>
-                        <li><a href="howitworks.html">How it works</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="container">
-            <div class="page-header">
-                <h1>How it works</h1>
-            </div>
+    <div id="conti">
+        <div id="container">
+            <h1>How it works</h1>
             <h2>Projects</h2>
             <p>All parts of the EVE Trivia project are open sourced and hosted on GitHub.
             Here is a list of all the projects and their current status. This also
@@ -73,14 +53,18 @@
                 </tr>
             </table>
             <h3>Frontends</h3>
-            For now the only frontend is the one integrated into the play portion of this
-            site. At a later date a standalone web frontend will be created for the project.
-            The posability also exists of creating dedicated mobile frontends for EVE Trivia
-            but at this time nothing is planned beyond the single web frontend.
-            <h2>The backlog <a href="https://waffle.io/evetrivia/evetrivia.github.io"><img src="https://badge.waffle.io/evetrivia/thanatos.svg?label=ready&title=Ready"></a></h2>
-            <p>The backlog of tasks to be completed for all projects associated with EVE Trivia
-            is maintained on Waffle.io. You can view it
-            <a href="https://waffle.io/evetrivia/evetrivia.github.io">here</a>.
+            <table class="table">
+                <tr>
+                    <th>Project Name</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/evetrivia/evetrivia.com">evetrivia.com</a></td>
+                    <td>Contains a basic HTML/JS frontend along with some other basic information.</td>
+                </tr>
+                <tr>
+            </table>
         </div>
+    </div>
     </body>
 </html>
