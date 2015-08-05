@@ -20,9 +20,9 @@
     </script>
   </head>
   <body>
-    <input type="radio" name="page" id="homePage" checked/>
-    <input type="radio" name="page" id="askPage"/>
-    <input type="radio" name="page" id="howitworksPage"/>
+    <input type="radio" name="page" onchange="switchPage(this);" id="homePage"/>
+    <input type="radio" name="page" onchange="switchPage(this);" id="askPage"/>
+    <input type="radio" name="page" onchange="switchPage(this);" id="howitworksPage"/>
     <div id="conti">
       <div class="page" id="home">
         <h1 class="card">Eve Trivia</h1>

@@ -1,7 +1,7 @@
 var categories;
 function loadCategories () {
   var catTmpl = $("#categoryTemplate").innerHTML;
-  ajax("http://erebus.evetrivia.com/", function (r) {
+  ajax("https://erebus.evetrivia.com/", function (r) {
     categories = r.categories;
     for(var c in r.categories) {
       r.categories[c].index = c;
@@ -60,7 +60,24 @@ loadCategories();
 addHighscore(0);
 
 
+function switchPage (el) {
+  if(el.checked) {
+    console.log(el);
+    history.pushState({}, el.id, "#" + el.id.replace("Page", ""));
+  }
+}
 
+var pages = ['', 'home', 'ask', 'howitworks'];
+window.onhashchange = window.onload = function () {
+  if(pages.indexOf(location.hash.slice(1)) != -1) {
+  console.log("hello");
+    var toggles = $("[name='page']");
+    for(var t in toggles) {
+      toggles[t].checked = false;
+    }
+    $((location.hash == "" ? '#home' : location.hash) + "Page").checked = true;
+  }
+};
 
 
 
