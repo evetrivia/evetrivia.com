@@ -1,0 +1,149 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000 url("../img/bg.jpg") no-repeat 50% 0;
+}
+
+body {
+  margin: 0;
+  font-size: 0.9em;
+  line-height: 1.5;
+  font-family: sans-serif;
+  color: #202020;
+}
+
+#conti {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  height: 100%;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, .6);
+  box-shadow: 0px 0px 5px 0px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+[name="page"] {
+  display: none;
+}
+
+.page {
+  display: none;
+}
+
+#homePage:checked ~ #conti #home {
+  display: block;
+}
+
+#askPage:checked ~ #conti #ask {
+  display: block;
+}
+
+#howitworksPage:checked ~ #conti #howitworks {
+  display: block;
+}
+
+.ask {
+  background-color: rgba(255, 255, 255, .6);
+  padding: 5px;
+  display: block;
+}
+
+#container {
+  overflow: hidden;
+}
+
+#images {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+img {
+  box-shadow: 0px 0px 5px 0px gray;
+  max-width: 100%;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  transition: opacity 1s, background-color .2s;
+  box-shadow: 0px 0px 2px 0px white inset;
+}
+
+.list-group {
+  padding-left: 0;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.question {
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: rgba(255,255,255,.6);
+  padding: 15px;
+  border: 1px solid rgba(255,255,255,.3);
+}
+
+.choice {
+  cursor: pointer;
+}
+
+#highscoreBox {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+#highscore {
+  max-width: 770px;
+  margin: auto;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, .6);
+  box-shadow: 0px 0px 5px 0px;
+}
+
+.details[type=checkbox] {
+  display: none;
+}
+
+.details[type=checkbox] + label {
+  display: block;
+  position: relative;
+}
+
+.details[type=checkbox]:not(:checked) + label > * {
+  display: none;
+}
+
+.details[type=checkbox] + label > h2, .details[type=checkbox] + label > h3, .details[type=checkbox] + label > h4 {
+  display: block !important;
+  position: relative;
+    cursor: pointer;
+}
+
+.details + label > h2, .details + label > h3, .details + label > h4, .details + label > h5 {
+  margin: 5px 0px;
+}
+
+.details[type=checkbox] + label > div > p {
+  background: #A0A0A0;
+  padding: 5px;
+  margin: 0px;
+  margin-bottom: 5px;
+}
