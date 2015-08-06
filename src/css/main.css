@@ -56,10 +56,15 @@ body {
   background-color: rgba(255, 255, 255, .6);
   padding: 5px;
   display: block;
+  cursor: pointer;
 }
 
 #container {
   overflow: hidden;
+}
+
+#categories {
+  text-align: left;
 }
 
 #images {
@@ -134,7 +139,7 @@ img {
 .details[type=checkbox] + label > h2, .details[type=checkbox] + label > h3, .details[type=checkbox] + label > h4 {
   display: block !important;
   position: relative;
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .details + label > h2, .details + label > h3, .details + label > h4, .details + label > h5 {
