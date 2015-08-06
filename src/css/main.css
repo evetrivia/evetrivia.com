@@ -56,7 +56,6 @@ body {
   background-color: rgba(255, 255, 255, .6);
   padding: 5px;
   display: block;
-  cursor: pointer;
 }
 
 #container {
@@ -65,6 +64,10 @@ body {
 
 #categories {
   text-align: left;
+}
+
+ul {
+  list-style: none;
 }
 
 #images {
