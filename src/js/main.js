@@ -1,12 +1,17 @@
 var categories;
 function loadCategories () {
   var catTmpl = $("#categoryTemplate").innerHTML;
+  var subCatTmpl = $("#subCategoryTemplate").innerHTML;
   ajax("https://erebus.evetrivia.com/", function (r) {
     categories = r.categories;
     for(var c in r.categories) {
       r.categories[c].index = c;
-      console.log(r.categories[c].random_category_question);
       $("#categories").appendChild(createElement(catTmpl.format(r.categories[c])));
+
+      for(var sc in r.categories[c].sub_categories) {
+        var subCategoryID = "#" + c + "SubCategories"
+        $(subCategoryID).appendChild(createElement(subCatTmpl.format(r.categories[c].sub_categories[sc])));
+      }
     }
     categoryURL = r.random_question;
   }, "json");

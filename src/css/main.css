@@ -62,6 +62,14 @@ body {
   overflow: hidden;
 }
 
+#categories {
+  text-align: left;
+}
+
+ul {
+  list-style: none;
+}
+
 #images {
   padding-left: 20px;
   padding-right: 20px;
@@ -134,7 +142,7 @@ img {
 .details[type=checkbox] + label > h2, .details[type=checkbox] + label > h3, .details[type=checkbox] + label > h4 {
   display: block !important;
   position: relative;
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .details + label > h2, .details + label > h3, .details + label > h4, .details + label > h5 {
